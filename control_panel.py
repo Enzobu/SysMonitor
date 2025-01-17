@@ -4,6 +4,22 @@ import threading
 import time
 gi.require_version('AppIndicator3', '0.1')
 from gi.repository import AppIndicator3, Gtk, GLib
+
+# Durée d'actualisation de la fenêtre
+actualisationTime = 1.25
+
+# Chemin des scripts qui renvoient les données
+SCRIPT_PROC_TEMP_PATH = "/opt/sensorsExtension/getProcTemp.sh"
+SCRIPT_PROC_SPEED_PATH = "/opt/sensorsExtension/getProcSpeed.sh"
+SCRIPT_STORAGE_TEMP_PATH = "/opt/sensorsExtension/getStorageTemp.sh"
+SCRIPT_MOTHER_BOARD_TEMP_PATH = "/opt/sensorsExtension/getMotherBoardTemp.sh"
+SCRIPT_NETWORK_ADAPTER_TEMP_PATH = "/opt/sensorsExtension/getNetworkAdapterTemp.sh"
+SCRIPT_FAN_SPEED_PATH = "/opt/sensorsExtension/getFanSpeed.sh"
+SCRIPT_CONSUMPTION_PATH = "/opt/sensorsExtension/getConsumption.sh"
+SCRIPT_BATTERY_ENERGY_FULL_DESIGN_PATH = "/opt/sensorsExtension/getBatteryEnergyFullDesign.sh"
+SCRIPT_BATTERY_ENERGY_FULL_PATH = "/opt/sensorsExtension/getBatteryEnergyFull.sh"
+SCRIPT_BATTERY_ENERGY_NOW_PATH = "/opt/sensorsExtension/getBatteryEnergyNow.sh"
+
 def get_proc_temperature():
     try:
         result = subprocess.check_output(["bash", SCRIPT_PROC_TEMP_PATH], text=True).strip()
